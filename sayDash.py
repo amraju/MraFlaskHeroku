@@ -6,7 +6,10 @@ import plotly.express as px
 from dash.dependencies import Input, Output
 
 
-app = dash.Dash()
+app = dash.Dash(__name__)
+server = app.server
+app.title="Stock Prices"
+app.config.suppress_callback_exceptions = True
 
 df = px.data.stocks()
 
@@ -43,4 +46,4 @@ def graph_update(dropdown_value):
 
 
 if __name__ == '__main__': 
-    app.run_server()
+    app.run_server(debug=False)
